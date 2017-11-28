@@ -11,13 +11,10 @@ git_repository(
 )
 
 load("@io_bazel_rules_go//go:def.bzl", "go_rules_dependencies", "go_register_toolchains")
-
 go_rules_dependencies()
-
 go_register_toolchains()
 
 load("@io_bazel_rules_go//proto:def.bzl", "proto_register_toolchains")
-
 proto_register_toolchains()
 
 load("@io_bazel_rules_go//go:def.bzl", "go_repository")
@@ -98,9 +95,9 @@ go_repository(
 
 go_repository(
     name = "com_github_opentracing_basictracer_go",
-    build_file_proto_mode = "legacy",
     commit = "1b32af207119a14b1b231d451df3ed04a72efebf",  # Sep 29, 2016 (no releases)
     importpath = "github.com/opentracing/basictracer-go",
+    build_file_proto_mode = "legacy",
 )
 
 load("//:x_tools_imports.bzl", "go_x_tools_imports_repositories")
@@ -271,9 +268,9 @@ go_repository(
 
 go_repository(
     name = "com_github_googleapis_gnostic",
-    build_file_proto_mode = "legacy",
     commit = "0c5108395e2debce0d731cf0287ddf7242066aba",  # Jul 29, 2017 (no releases)
     importpath = "github.com/googleapis/gnostic",
+    build_file_proto_mode = "legacy",
 )
 
 go_repository(
@@ -465,7 +462,7 @@ go_repository(
 go_repository(
     name = "com_github_apache_thrift",
     build_file_name = "BUILD.bazel",
-    commit = "d4df91709b724174aaf8a957f3edac3573be354e",  # Oct 26, 2017 (HEAD) required by openzipkin dependency.
+    commit = "b2a4d4ae21c789b689dd162deb819665567f481c",  # Jan 6, 2017 (0.10.0)
     importpath = "github.com/apache/thrift",
 )
 
@@ -543,11 +540,33 @@ go_repository(
 
 go_repository(
     name = "com_github_openzipkin_zipkin_go_opentracing",
-    build_file_proto_mode = "legacy",
-    commit = "75836a71be339e7faf1b6b775e0703a875f484de",  # Oct 26, 2017 (fixes goroutine proliferation)
+    commit = "90d57f421daae5e385ce2429580f0d695c41823b",  # Jul 5, 2017 (has releases but we need a newer commit)
     importpath = "github.com/openzipkin/zipkin-go-opentracing",
-    remote = "https://github.com/mandarjog/zipkin-go-opentracing",
-    vcs = "git",
+    build_file_proto_mode = "legacy",
+)
+
+go_repository(
+    name = "org_golang_x_sync",
+    commit = "f52d1811a62927559de87708c8913c1650ce4f26",  # May 17, 2017 (no releases)
+    importpath = "golang.org/x/sync",
+)
+
+go_repository(
+    name = "com_github_open_policy_agent_opa",
+    commit = "d9f7f5f00f24e4fc4f9ef15c8afaf44b5b8612f9",  # Aug 15, 2017 (no releases)
+    importpath = "github.com/open-policy-agent/opa",
+)
+
+go_repository(
+    name = "com_github_dchest_siphash",
+    commit = "4ebf1de738443ea7f45f02dc394c4df1942a126d",  # Aug 31, 2016 (no releases)
+    importpath = "github.com/dchest/siphash",
+)
+
+go_repository(
+    name = "com_github_pkg_errors",
+    commit = "c605e284fe17294bda444b34710735b29d1a9d90",  # May 4, 2017 (no releases)
+    importpath = "github.com/pkg/errors",
 )
 
 go_repository(

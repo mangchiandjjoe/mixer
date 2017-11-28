@@ -14,14 +14,22 @@
 
 syntax = "proto3";
 
-package authz;
+package adapter.opa.config;
 
-import "mixer/v1/config/descriptor/value_type.proto";
-import "mixer/v1/template/extensions.proto";
+import "gogoproto/gogo.proto";
 
-option (istio.mixer.v1.template.template_variety) = TEMPLATE_VARIETY_CHECK;
+option go_package="config";
+option (gogoproto.goproto_getters_all) = false;
+option (gogoproto.equal_all) = false;
+option (gogoproto.gostring_all) = false;
 
-message Template {
-  map<string, istio.mixer.v1.config.descriptor.ValueType> subject = 1;
-  map<string, istio.mixer.v1.config.descriptor.ValueType> action = 2;
+message Params {
+  // List of OPA policies
+  repeated string policy = 1;
+
+  // Query method to check, data.<package name>.<method name>
+  string check_method = 2;
+
+  // Close the client request when adapter is disabled for invalid OPA policies
+  bool fail_close = 3;
 }
